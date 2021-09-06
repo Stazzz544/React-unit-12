@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Cart from '../components/Cart'
-import { increment, decrement } from '../store/cartSlice';
+import { increment, decrement, nullify } from '../store/cartSlice';
 import {
     selectGoods
 } from '../store/goodsSlice';
@@ -19,7 +19,7 @@ function CartList() {
         accum[item['articul']] = item;
         return accum;
     }, {});
-    // console.log(goodsObj);
+
 
 
 	 let clickHandler = (event) => {
@@ -29,6 +29,8 @@ function CartList() {
 			dispatch(increment(t.getAttribute('data-key')));
 		} else if (t.classList.contains('minus')) {
 			dispatch(decrement(t.getAttribute('data-key')));
+		} else if (t.classList.contains('null')) {
+			dispatch(nullify(t.getAttribute('data-key')));
 		}
   }
 
