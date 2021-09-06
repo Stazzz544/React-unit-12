@@ -1,0 +1,22 @@
+.wrapper{
+	padding: 13px;
+}
+.flexWrapper{
+	margin-top: 2px;
+	width: 66.5%;
+	display: flex;
+	justify-content: space-between;
+	border: 1px black solid;
+}
+
+.flexWrapperMain{
+	background-color: rgb(216, 228, 232);
+}
+
+
+.flexItem{
+	flex: 0 0 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
