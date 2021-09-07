@@ -1,6 +1,7 @@
 import s from './cart.module.css'
 
 function Cart (props) {
+	
 	return(
 
 		<div  className={s.wrapper}>
@@ -17,26 +18,22 @@ function Cart (props) {
 			
 			{
 			Object.keys(props.cart).map(item => 
-	
+				
 			<div key={item + props.goodsObj[item]['title']} >
 				<div className={s.flexWrapper}>
 					<div className={`${s.flexItem} ${s.flexItemFirst}`}>
 						<div>{props.goodsObj[item]['title']}</div>
-						<img src={props.goodsObj[item]['image']} className={s.fleximg}/>
+						<img alt='img' src={props.goodsObj[item]['image']} className={s.fleximg}/>
 					</div>				
 					<div className={s.flexItem}>{props.goodsObj[item]['cost']}</div>
-					<div className={s.flexItem}>{props.cart[item]}</div>
-					<div className={s.flexItem}>{props.goodsObj[item]['cost'] * props.cart[item]}</div>
+					<div className={s.flexItem}>{props.cart[item]['count']}</div>
+					<div className={s.flexItem}>{props.goodsObj[item]['cost'] * props.cart[item]['count']}</div>
 					<div className={s.flexItem}>
 						
 						<button data-key={props.goodsObj[item]['articul']} 
-								  count =  {props.cart[item]}
-								  price =  {props.goodsObj[item]['cost']}
 								  className='plus'>+</button>
 
 						<button data-key={props.goodsObj[item]['articul']} 
-								  count =  {props.cart[item]}
-								  price =  {props.goodsObj[item]['cost']}
 								  className='minus'>-</button>
 					</div>
 
@@ -46,9 +43,11 @@ function Cart (props) {
 					</div>
 				</div>
 			</div>
-
-
 			)}
+			{props.totalSum === 0 ?
+			<div className={s.backet}>Корзина пуста :( </div>
+			:
+			<div className={s.backet}>общая сумма: {props.totalSum}</div>}
 
 		</div>
 
@@ -58,8 +57,3 @@ function Cart (props) {
 }
 
 export default Cart
-
-// {Object.keys(props.cart).map(item => 
-// 	<div key={item + props.goodsObj[item]['title']}>
-// 		{props.goodsObj[item]['title']} - {props.cart[item]}
-// 	</div>)}

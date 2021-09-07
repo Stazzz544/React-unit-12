@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     selectGoods
@@ -18,8 +18,11 @@ function GoodsList() {
     let clickHandler = (event) => {
         event.preventDefault();
         let t = event.target;
+		  let dataKey = t.getAttribute('data-key');
+		  let cost = t.getAttribute('cost');
+
         if (!t.classList.contains('add-to-cart')) return true;
-        dispatch(increment(t.getAttribute('data-key')));
+        dispatch(increment({dataKey, cost}));
     }
 
     return (
